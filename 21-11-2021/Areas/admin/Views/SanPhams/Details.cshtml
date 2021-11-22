@@ -1,0 +1,163 @@
+﻿@model _21_11_2021.Areas.admin.Models.SanPham
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Chi tiết</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="~/pro/@Html.DisplayFor(model => model.HinhAnh)"
+                                     alt="User profile picture">
+                            </div>
+
+                            <h3 class="profile-username text-center">Tên sản phẩm: @Html.DisplayFor(model => model.TenSanPham)</h3>
+
+                            <p class="text-muted text-center">Hạng mục: @Html.DisplayFor(model => model.HangMuc)</p>
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Giá </b> <a class="float-right"><del>@Model.Gia.ToString("N0") &#8363;</del></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Giá khuyến mãi</b> <a class="float-right">@Model.GiaKhuyenMai.ToString("N0") &#8363;</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Giá thực</b> <a class="float-right" style="color:red;">@Model.GiaDaKhuyenMai.ToString("N0") &#8363;</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Chi tiết</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Thông tin</a></li>
+                            </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <!-- Post -->
+                                    <div class="post">
+                                        <div class="user-block">
+                                            <span class="username">
+                                                <p>
+                                                    @Html.Raw(Model.ChiTiet)
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- /.post -->
+                                </div>
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
+
+                                <div class="tab-pane" id="settings">
+                                    <form class="form-horizontal">
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Mã sản phẩm</label>
+                                            <div class="col-sm-10">
+                                                @Html.DisplayFor(model => model.MaSanPham)
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail" class="col-sm-2 col-form-label">Mã khuyến mãi</label>
+                                            <div class="col-sm-10">
+                                                @Model.MaKhuyenMai
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName2" class="col-sm-2 col-form-label">Mã loại sản phẩm</label>
+                                            <div class="col-sm-10">
+                                                @Html.DisplayFor(model => model.MaLoaiSanPham)
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputSkills" class="col-sm-2 col-form-label">Trạng thái</label>
+                                            <div class="col-sm-10">
+                                                @Html.DisplayFor(model => model.TrangThai)
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                                    <a asp-action="Edit" asp-route-id="@Model.MaSanPham" style="color:white;">Cập nhật</a>
+                                                </button>
+                                            </div>
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                                    <a asp-action="Index" style="color:white;">Quay trở về</a>
+                                                </button>
+                                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#flipFlop">
+                                                    <a style="color:white;"> Xóa </a>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modalLabel">Bạn có muốn xóa tin này?</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+            <h4>Tên sản phẩm:  @Html.DisplayFor(model => model.TenSanPham)</h4>
+            <h4>Giá:  @Model.GiaDaKhuyenMai.ToString("N0") &#8363;</h4>
+        </div>
+        <div class="modal-footer">
+            <a asp-action="DeleteModal" asp-route-id="@Model.MaSanPham" style="color:red;">Xóa</a>
+        </div>
+    </div>
+</div>
+</div>

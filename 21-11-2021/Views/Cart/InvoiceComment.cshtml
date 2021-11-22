@@ -1,0 +1,86 @@
+﻿@model _21_11_2021.Areas.admin.Models.DanhGia
+@{
+    int id = 0;
+    int dachay = 0;
+}
+
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Đơn hàng</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button><a asp-action="Invoice" asp-controller="Cart" style="color:white;">Đang xử lí</a></button>
+                        <button><a asp-action="InvoiceShip" asp-controller="Cart" style="color:white;">Đang vận chuyển</a></button>
+                        <button><a asp-action="InvoiceDone" asp-controller="Cart" style="color:white;">Đã hoàn thành</a></button>
+                        <button><a asp-action="InvoiceCancel" asp-controller="Cart" style="color:white;">Đã hủy</a></button>
+                        <button class="active"><a style="color:white;">Đánh giá</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wishlist-box-main special-grid best-seller">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-main table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Ngày mua</th>
+                                        <th>Đánh giá</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var danhgia in ViewBag.DanhGia)
+                                    {
+                                        @foreach (var sanpham in ViewBag.SP)
+                                        {
+                                            @foreach (var chitiethoadon in ViewBag.ChiTiet)
+                                            {
+                                                @if (danhgia.MaSanPham == chitiethoadon.MaSanPham && sanpham.MaSanPham == chitiethoadon.MaSanPham && id != chitiethoadon.MaSanPham)
+                                                {
+                                                    id = chitiethoadon.MaSanPham;
+                                                    <tr>
+                                                        <td class="thumbnail-img">
+                                                            <a>
+                                                                <img class="img-fluid" src="~/pro/@sanpham.HinhAnh" alt="" />
+                                                            </a>
+                                                        </td>
+                                                        <td class="name-pr">
+                                                            <a href="#">
+                                                                @sanpham.TenSanPham
+                                                            </a>
+                                                        </td>
+                                                        <td class="price-pr">
+                                                            <p>@chitiethoadon.NgayDatHang</p>
+                                                        </td>
+
+                                                        <td class="add-pr">
+                                                            <input disabled value="@danhgia.ChiTiet" class="form-control" />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

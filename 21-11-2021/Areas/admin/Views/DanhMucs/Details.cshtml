@@ -1,0 +1,94 @@
+﻿@model _21_11_2021.Areas.admin.Models.DanhMuc
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Danh mục sản phẩm</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a>Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Danh mục @ViewBag.TenDanhMuc</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <a data-toggle="modal" data-target="#flipFlop"><i class="fas fa-trash-alt"></i></a>
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã loại</th>
+                                            <th>Tên loại</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.loaisp)
+                                        {
+                                            if (item.TrangThai == true)
+                                            {
+                                                <tr>
+                                                    <td>@item.MaLoaiSanPham</td>
+                                                    <td>
+                                                        @item.TenLoaiSanPham
+                                                    </td>
+                                                </tr>
+                                            }
+                                            @*<a asp-action="Delete" asp-route-id="@item.MaDanhMuc">Delete</a>*@
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</div>
+<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Bạn có muốn xóa danh mục này?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                Khi xóa danh mục này thì tất cả các loại sản phẩm và sản phẩm liên quan đều bị xóa, bạn có chắc xóa?
+            </div>
+            <div class="modal-footer">
+                <a asp-action="UpdateStatus" asp-route-id="@ViewBag.MaDanhMuc" style="color:red;">Xóa</a>
+            </div>
+        </div>
+    </div>
+</div>

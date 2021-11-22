@@ -1,0 +1,80 @@
+﻿@model _21_11_2021.Areas.admin.Models.LoaiSanPham
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Thêm loại sản phẩm</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Thêm loại sản phẩm</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Loại sản phẩm</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="TenLoaiSanPham" class="control-label">Tên loại sản phẩm</label>
+                                <input asp-for="TenLoaiSanPham" class="form-control" />
+                                <span asp-validation-for="TenLoaiSanPham" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="MaDanhMuc" for="inputStatus">Danh mục</label>
+                                <select asp-for="MaDanhMuc" id="inputStatus" class="form-control custom-select">
+                                    <option selected disabled>Chọn mã danh mục</option>
+                                    @foreach (var item in ViewBag.DanhMuc)
+                                    {
+                                        <option value="@item.MaDanhMuc">@item.TenDanhMuc</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success float-right">
+                                    <a asp-controller="LoaiSanPhams" asp-action="Index" style="color:white;">Quay trở về</a>
+                                </button>
+                                @*<input type="submit" value="Back to list" asp-controller="LoaiSanPhams" asp-action="Index" >*@
+                                @*<a asp-action="Index">Back to list</a>*@
+                                <input type="submit" value="Thêm mới" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

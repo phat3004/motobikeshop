@@ -1,0 +1,12 @@
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\bin\Release\net5.0\EmailSender.deps.json
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\bin\Release\net5.0\EmailSender.dll
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\bin\Release\net5.0\ref\EmailSender.dll
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\bin\Release\net5.0\EmailSender.pdb
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\EmailSender.csprojAssemblyReference.cache
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\EmailSender.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\EmailSender.AssemblyInfoInputs.cache
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\EmailSender.AssemblyInfo.cs
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\EmailSender.csproj.CoreCompileInputs.cache
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\EmailSender.dll
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\ref\EmailSender.dll
+C:\Users\N.H.M.Phat\OneDrive\Desktop\Final_véion\New_Version\MotoBike_Shop\EmailSender\obj\Release\net5.0\EmailSender.pdb

@@ -1,0 +1,126 @@
+﻿    <!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Sản phẩm</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index">Cửa hàng</a></li>
+                    <li class="breadcrumb-item active">Sản phẩm chi tiết</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Shop Detail  -->
+<div class="shop-detail-box-main">
+    <div class="container">
+        @foreach (var item in ViewBag.Chitiet)
+        {
+            <div class="row">
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active"> <img class="d-block w-100" src="~/pro/@item.HinhAnh" alt="First slide"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-6">
+
+                    <div class="single-product-details">
+                        <h2>@item.TenSanPham</h2>
+                        @if (item.Gia == item.GiaDaKhuyenMai)
+                        {
+                            <h5>@item.GiaDaKhuyenMai.ToString("N0") &#8363;</h5>
+                        }
+                        else
+                        {
+                            <h5> <del>@item.Gia.ToString("N0") &#8363;</del> @item.GiaKhuyenMai.ToString("N0") &#8363;</h5>
+                        }
+                        <p class="available-stock"><span> @item.HangMuc</span></p>
+                        <h4>Chi tiết</h4>
+                        <p>
+                            @Html.Raw(item.ChiTiet)
+                        </p>
+
+
+                        <div class="price-box-bar">
+                            <div class="cart-and-bay-btn">
+                                <a style="background-color:red;" class="btn hvr-hover" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MaSanPham">Thêm vào giỏ</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+        <div class="row my-5">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Đánh giá sản phẩm</h1>
+                </div>
+
+                <div class="featured-products-box owl-carousel owl-theme">
+                    @foreach (var danhgia in ViewBag.DanhGia)
+                    {
+                        @foreach (var khach in ViewBag.Khach)
+                        {
+                            @if (khach.Id == danhgia.MaKhachHang && danhgia.TrangThai == true)
+                            {
+                                <div class="item">
+                                    <div class="products-single fix">
+                                        <div class="why-text">
+                                            <h4>@khach.HoTen</h4>
+                                            <h5 style="color:orangered;">@danhgia.ChiTiet</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+
+                    }
+                </div>
+ 
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Sản phẩm khác</h1>
+                    <p>Các sản phẩm đặc sắc của shop.</p>
+                </div>
+
+                <div class="featured-products-box owl-carousel owl-theme">
+                    @foreach (var item in ViewBag.SanPham)
+                    {
+                        @if (item.HangMuc == "Đặc sắc" || item.HangMuc == "Bán chạy nhất")
+                        {
+                            <div class="item">
+                                <div class="products-single fix">
+                                    <div class="box-img-hover">
+                                        <img src="~/pro/@item.HinhAnh" class="img-fluid" alt="Image">
+                                        <div class="mask-icon">
+                                            <ul>
+                                                <li><a data-toggle="tooltip" data-placement="right" title="view" asp-action="Chitietsanpham" asp-controller="Home" asp-route-id="@item.MaSanPham"><i class="fas fa-eye"></i></a></li>
+                                            </ul>
+                                            <a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MaSanPham">Thêm vào giỏ</a>
+                                        </div>
+                                    </div>
+                                    <div class="why-text">
+                                        <h4>@item.TenSanPham</h4>
+                                        <h5 style="color:orangered;">@item.GiaKhuyenMai.ToString("N0") &#8363;</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- End Cart -->

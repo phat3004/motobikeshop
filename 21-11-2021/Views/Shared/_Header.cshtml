@@ -1,0 +1,167 @@
+﻿<!-- Start Main Top -->
+<div class="main-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="text-slid-box">
+                    <div id="offer-box" class="carouselTicker">
+                        <ul class="offer-box">
+                            <li>
+                                <i class="fab fa-opencart"></i> Giảm 10%! linh kiện xe máy
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 50% - 80% phụ tùng mô tô
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 20% decal xe các loại
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Giảm ngay 50%! tất cả sản phẩm khi mua ngay bây giờ
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Giảm 10%! linh kiện xe máy
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 50% - 80% phụ tùng mô tô
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 20% decal xe các loại
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Giảm ngay 50%! tất cả sản phẩm khi mua ngay bây giờ
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="our-link">
+                    <ul>
+                        <partial name="_Login" />
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Main Top -->
+<!-- Start Main Top -->
+<header class="main-header" style="margin:unset;">
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+        <div class="container">
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand"><img src="~/User/images/logo.png" class="logo" alt=""></a>
+            </div>
+            <!-- End Header Navigation -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                    @if (ViewBag.Active == "Home")
+                    {
+                        <li class="nav-item active"><a class="nav-link" asp-action="Index" asp-controller="Home">Trang chủ</a></li> 
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+                    }
+                    @if (ViewBag.Active == "About")
+                    {
+                        <li class="nav-item active"><a class="nav-link" asp-action="aboutus" asp-controller="Home">Về chúng tôi</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-action="aboutus" asp-controller="Home">Về chúng tôi</a></li>
+                    }
+                    @if (ViewBag.Active == "SanPham")
+                    {
+                        <li class="dropdown megamenu-fw active">
+                            <a asp-action="FullSanPham" asp-controller="Home" class="nav-link" data-toggle="dropdown">Sản phẩm</a>
+                            <ul class="dropdown-menu megamenu-content" role="menu">
+                                <li>
+                                    <div class="row">
+                                        @foreach (var item in ViewBag.DanhMucSp)
+                                        {
+                                            <div class="col-menu col-md-3">
+                                            <h6 class="title">@item.TenDanhMuc</h6>
+                                                @foreach (var item1 in ViewBag.LoaiSP)
+                                                    {
+                                                        @if (item.MaDanhMuc == item1.MaDanhMuc && item1.TrangThai == true)
+                                                            {
+                                                                <div class="content">
+                                                                    <ul class="menu-col">
+                                                                        <li><a asp-action="Sanpham" asp-controller="Home" asp-route-id="@item1.MaLoaiSanPham">@item1.TenLoaiSanPham</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                              }
+                                                        }
+                                                </div>
+                                         }
+                                     </div>
+                                </li>
+                             </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown megamenu-fw">
+                             <a asp-action="FullSanPham" asp-controller="Home" class="nav-link" data-toggle="dropdown">Sản phẩm</a>
+                              <ul class="dropdown-menu megamenu-content" role="menu">
+                                  <li>
+                                      <div class="row">
+                                           @foreach (var item in ViewBag.DanhMucSp)
+                                            {
+                                                <div class="col-menu col-md-3">
+                                                <h6 class="title">@item.TenDanhMuc</h6>
+                                                    @foreach (var item1 in ViewBag.LoaiSP)
+                                                     {
+                                                        @if (item.MaDanhMuc == item1.MaDanhMuc && item1.TrangThai == true)
+                                                         {
+                                                             <div class="content">
+                                                                 <ul class="menu-col">
+                                                                     <li><a asp-action="Sanpham" asp-controller="Home" asp-route-id="@item1.MaLoaiSanPham">@item1.TenLoaiSanPham</a></li>
+                                                                 </ul>
+                                                             </div>
+                                                         }
+                                                     }
+                                                </div>
+                                            }
+                                        </div>
+                                  </li>
+                              </ul>
+                        </li>
+                    }
+                    @if(ViewBag.Active == "LienHe")
+                    {
+                        <li class="nav-item active"><a class="nav-link" asp-controller="LienHe" asp-action="Create">Liên hệ</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-controller="LienHe" asp-action="Create">Liên hệ</a></li>
+                    }             
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li>
+                        <a asp-action="Index" asp-controller="Cart">
+                            <i class="fa fa-shopping-bag"></i>
+                            <span class="badge">@ViewBag.SoLuong</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+        </div>
+        <!-- Start Side Menu -->
+        <!-- End Side Menu -->
+    </nav>
+    <!-- End Navigation -->
+</header>
+<!-- End Main Top -->

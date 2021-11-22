@@ -1,0 +1,84 @@
+﻿@{
+    int id = 0;
+}
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Đơn hàng</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button><a asp-action="Invoice" asp-controller="Cart" style="color:white;">Đang xử lí</a></button>
+                        <button><a asp-action="InvoiceShip" asp-controller="Cart" style="color:white;">Đang vận chuyển</a></button>
+                        <button><a asp-action="InvoiceDone" asp-controller="Cart" style="color:white;">Đã hoàn thành</a></button>
+                        <button class="active">Đã hủy</button>
+                        <button><a asp-action="InvoiceComment" asp-controller="Cart" style="color:white;">Đánh giá</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wishlist-box-main special-grid best-seller">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-main table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Ngày đặt hàng</th>
+                                        <th>Tổng giá</th>
+                                        <th>Chi tiết</th>
+                                        <th>Trạng thái đơn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item1 in ViewBag.ChiTiet)
+                                    {
+
+                                        @foreach (var item in ViewBag.don)
+                                        {
+                                            @if (item.IdDonHang == item1.IdDonHang && id != item1.IdDonHang && item.TrangThai == 0)
+                                            {
+                                                <tr>
+                                                    <td class="name-pr">
+                                                        <a href="#">
+                                                            @item.MaDonHang
+                                                        </a>
+                                                    </td>
+                                                    <td class="price-pr">
+                                                        <p>@item1.NgayDatHang</p>
+                                                    </td>
+                                                    <td class="price-pr">
+                                                        <p>@item.TongTien.ToString("N0") &#8363;</p>
+                                                    </td>
+                                                    <td class="add-pr">
+                                                        <a class="btn hvr-hover" style="background-color:red;" asp-action="DetailsInvoice" asp-controller="Cart" asp-route-id="@item.IdDonHang">Chi tiết</a>
+                                                    </td>
+                                                    <td class="remove-pr">
+                                                        <a>
+                                                            <i class="fas fa-check-circle" style="color:palevioletred;"></i>
+                                                            Đã hủy
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                id = item1.IdDonHang;
+                                            }
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

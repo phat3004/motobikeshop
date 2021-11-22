@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<div class="our-link">
+    <ul>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item">
+                @*<a class="nav-link " asp-controller="Home" asp-action="Profile" title="Welcome">@User.Identity.Name</a>*@
+                <a class="nav-link btn btn-link text-info" onclick="showInPopUp('/Home/Profile','Sửa thông tin')" style="color:white;">@User.Identity.Name</a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="Account" asp-action="Logout" type="submit" class="nav-link btn btn-link text-info">Đăng xuất</a>
+            </li>
+            <li class="nav-item">
+                <a asp-action="Invoice" asp-controller="Cart">Đơn Hàng</a>
+            </li>
+        }
+        else
+        {
+
+        <li>
+            @*<a class="nav-link " asp-controller="Account"
+               asp-action="Login">Đăng nhập</a>*@
+            <a class="nav-link btn btn-link text-info" onclick="showInPopUp('/Account/Login','Đăng nhập')" style="color:white;">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " asp-controller="Account"
+               asp-action="Register">Đăng ký</a>
+            @*<a class="nav-link btn btn-link text-info" onclick="showInPopUp('/Account/Register','Đăng ký')" style="color:white;">Đăng ký</a>*@
+        </li>
+        }
+    </ul>
+
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="form-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>

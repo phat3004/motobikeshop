@@ -1,0 +1,30 @@
+﻿@model _21_11_2021.Areas.admin.Models.Slideshows
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết Slideshows</h1>
+
+<div>
+    <h4>Slideshows</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hinh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hinh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdSlideShow">Cập nhật</a> |
+    <a asp-action="Index">Quay trở về</a>
+</div>

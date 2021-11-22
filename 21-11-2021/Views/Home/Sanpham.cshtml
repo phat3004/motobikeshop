@@ -1,0 +1,132 @@
+﻿<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Cửa hàng</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Cửa hàng</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                <div class="product-categori">
+                    <div class="search-product">
+                        <form>
+                            @using (Html.BeginForm("SanPham", "Home", FormMethod.Get))
+                            {
+                            <p>
+                                Tên sản phẩm: @Html.TextBox("searchString")
+                                <input type="submit" value="Tìm kiếm" style="background-color:red; color:white;" />
+                            </p>
+                            }
+                        </form>
+                    </div>
+                    <div class="filter-sidebar-left">
+                        <div class="title-left">
+                            <h3>Danh mục</h3>
+                        </div>
+                        <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                            @foreach (var danhmuc in ViewBag.DanhMucSp)
+                            {
+
+                                <div class="list-group-collapse sub-men">
+                                    <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">
+                                        @danhmuc.TenDanhMuc
+                                    </a>
+                                    <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                        <div class="list-group">
+                                            @foreach (var loai in ViewBag.LoaiSP)
+                                            {
+                                                if (danhmuc.MaDanhMuc == loai.MaDanhMuc)
+                                                {
+                                                    <a asp-action="Sanpham" asp-controller="Home" asp-route-id="@loai.MaLoaiSanPham" class="list-group-item list-group-item-action active">@loai.TenLoaiSanPham</a>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+                    <div class="product-item-filter row">
+                        <div class="col-12 col-sm-4 text-center text-sm-right">
+                            <h1>Sản phẩm</h1>
+                        </div>
+                    </div>
+
+                    <div class="row product-categorie-box">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                <div class="row">
+                                    @foreach (var item in ViewBag.ListSP)
+                                    {
+                                        if (item.TrangThai == true)
+                                        {
+                                            if (item.GiaKhuyenMai != 0)
+                                            {
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                <p class="sale">sale</p>
+                                                            </div>
+                                                            <img src="~/pro/@item.HinhAnh" class="img-fluid" alt="image">
+                                                            <div class="mask-icon">
+                                                                <ul>
+                                                                    <li><a data-toggle="tooltip" data-placement="right" title="xem" asp-action="Chitietsanpham" asp-controller="Home" asp-route-id="@item.MaSanPham"><i class="fas fa-eye"></i></a></li>
+                                                                </ul>
+                                                                <a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MaSanPham">Thêm vào giỏ</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="why-text">
+                                                            <h4>@item.TenSanPham</h4>
+                                                            <h5><del>@item.Gia.ToString("N0") &#8363; </del><sup style="color:red;"> - @item.GiaKhuyenMai.ToString("N0") &#8363;</sup></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                             {
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <img src="~/pro/@item.HinhAnh" class="img-fluid" alt="image">
+                                                            <div class="mask-icon">
+                                                                <ul>
+                                                                    <li><a data-toggle="tooltip" data-placement="right" title="xem" asp-action="Chitietsanpham" asp-controller="Home" asp-route-id="@item.MaSanPham"><i class="fas fa-eye"></i></a></li>
+                                                                </ul>
+                                                                <a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MaSanPham">Thêm vào giỏ</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="why-text">
+                                                            <h4>@item.TenSanPham</h4>
+                                                            <h5>@item.Gia.ToString("N0") &#8363;</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        }
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

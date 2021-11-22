@@ -1,0 +1,68 @@
+﻿@model _21_11_2021.Areas.admin.Models.DanhGia
+
+<form asp-action="Create" >
+    <div class="cart-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Bình luận</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach (var item1 in ViewBag.ChiTiet)
+                                {
+                                    @foreach (var item in ViewBag.SanPham)
+                                    {
+                                        if (item.MaSanPham == item1.MaSanPham)
+                                        {
+                                            <tr>
+                                                <td class="thumbnail-img">
+                                                    <a>
+                                                        <img class="img-fluid" src="~/pro/@item.HinhAnh" alt="" />
+                                                    </a>
+                                                </td>
+                                                <td class="name-pr">
+                                                    <a>
+                                                        @item.TenSanPham
+                                                    </a>
+
+                                                </td>
+                                                <td>
+                                                    <a onclick="showInPopUp('/Comment/Modal/'+ @item.MaSanPham,'Hãy nhập bình luận cho sản phẩm')" class="btn btn-sm btn-success">Bình Luận</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="modal" tabindex="-1" role="dialog" id="form-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>

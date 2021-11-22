@@ -1,0 +1,105 @@
+﻿@model IEnumerable<_21_11_2021.Areas.admin.Models.DanhGia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Danh mục sản phẩm</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Danh mục sản phẩm</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="alert-box" class="alert @TempData["AlertType"] hide" style="background-color:blue; color:white;">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Chi Tiết</th>
+                                            <th>Ngày đánh giá</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Sản phẩm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.TrangThai == true)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ChiTiet)
+                                                    </td>
+                                                    <td>@item.NgayDanhGia</td>
+                                                    @foreach (var khach in ViewBag.KhachHang)
+                                                    {
+                                                        if (item.MaKhachHang == khach.Id)
+                                                        {
+                                                            <td>@khach.HoTen</td>
+                                                        }
+                                                    }
+                                                    @foreach (var sp in ViewBag.SanPham)
+                                                    {
+                                                        if (item.MaSanPham == sp.MaSanPham)
+                                                        {
+                                                            <td>@sp.TenSanPham</td>
+                                                        }
+                                                    }
+                                                <td>
+                                                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                                        <a asp-action="UpdateStatus" asp-route-id="@item.MaDanhGia" style="color:white;">Xóa</a>
+                                                    </button>                                                 
+                                                </td>
+                                                </tr>
+                                            }
+                                            @*<a asp-action="Delete" asp-route-id="@item.MaDanhMuc">Delete</a>*@
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</div>
+

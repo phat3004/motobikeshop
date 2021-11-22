@@ -1,0 +1,66 @@
+﻿<!-- Start Instagram Feed  -->
+<div class="instagram-box">
+    <div class="main-instagram owl-carousel owl-theme">
+        @foreach (var item in ViewBag.Foot)
+        {
+            @if (item.TrangThai == true)
+            {
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="~/footshow/@item.Hinh" />
+                        <div class="hov-in">
+                            <a asp-controller="Home" asp-action="FullSanPham"><i class="fas fa-store"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+<!-- End Instagram Feed  -->
+<!-- Start Footer  -->
+<footer>
+    <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-widget">
+                        <h4>MotobikeShop</h4>
+                        <p>
+                            Cam kết chất lượng, nói không với hàng fake, hậu mãi chu đáo, miễn phí kiểm tra sản phẩm trọn đời, thời gian bảo trì dài hạn, vì bạn là một phần của chúng tôi.
+                        </p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/MotobikeShop-108265828336469"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UC28UtB_FdIIb4Zgeu7o9IZA"><i class="fab fa-youtube"></i></a></li>                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-link">
+                        <h4>Thương hiệu</h4>
+                        <ul style="color:white;">
+                            <li><img src="~/img/logo.PNG"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-link-contact">
+                        <h4>Liên hệ</h4>
+                        <ul>
+                            <li>
+                                <p><i class="fas fa-map-marker-alt"></i><a href="https://www.google.com/maps/place/65+Hu%E1%BB%B3nh+Th%C3%BAc+Kh%C3%A1ng/10.7719889,106.6992349,17z/data=!3m1!4b1!4m5!3m4!1s0x31752f40c7eb9c5d:0xd552bc9b7f536c13!8m2!3d10.7719889!4d106.7014236?hl=vi-VN">Address</a>: HCM, <br>65 Huynh Thuc Khang,<br> PS: The next SaiGon Centre</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:0907231374">+84 907231374</a></p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:nhmphat304@gmail.com">motobikeshop@gmail.com</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer  -->

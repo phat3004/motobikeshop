@@ -1,0 +1,259 @@
+﻿<!-- Start Top Search -->
+<div class="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
+</div>
+<!-- End Top Search -->
+<!-- Start Slider -->
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        @foreach (var item in ViewBag.Slide)
+        {
+            @if (item.NoiBat == 1 && item.TrangThai == true)
+            {
+                <li class="text-left">
+                    <img src="~/slideshow/@item.Hinh" alt="" width="1024px;" height="657px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="m-b-20"><strong>Chào mừng bạn đã ghé thăm <br> Motobikeshop</strong></h1>
+                                <p class="m-b-40">Hãy đặt sản phẩm nếu bạn cần - Và gọi ngay cho chúng tôi nếu muốn tư vấn : 0907231374</p>
+                                <p><a class="btn hvr-hover" asp-controller="Home" asp-action="FullSanPham" style="background-color:#F08080">Vào cửa hàng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+            @if (item.NoiBat == 2 && item.TrangThai == true)
+            {
+                <li class="text-center">
+                    <img src="~/slideshow/@item.Hinh" alt="" width="1024px;" height="657px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="m-b-20"><strong>Chào mừng bạn đã ghé thăm <br> Motobikeshop</strong></h1>
+                                <p class="m-b-40">Hãy đặt sản phẩm nếu bạn cần - Và gọi ngay cho chúng tôi nếu muốn tư vấn : 0907231374</p>
+                                <p><a class="btn hvr-hover"asp-controller="Home" asp-action="FullSanPham" style="background-color:#F08080">Vào cửa hàng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+            @if (item.NoiBat == 3 && item.TrangThai == true)
+            {
+                <li class="text-right">
+                    <img src="~/slideshow/@item.Hinh" alt="" width="1024px;" height="657px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="m-b-20"><strong>Chào mừng bạn đã ghé thăm <br> Motobikeshop</strong></h1>
+                                <p class="m-b-40">Hãy đặt sản phẩm nếu bạn cần - Và gọi ngay cho chúng tôi nếu muốn tư vấn : 0907231374</p>
+                                <p><a class="btn hvr-hover" asp-controller="Home" asp-action="FullSanPham" style="background-color:#F08080">Vào cửa hàng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+
+        }
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+<!-- End Slider -->
+<!-- Start Categories  -->
+<div class="categories-shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>BẠN CÓ THỂ MUA</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                @foreach (var non in ViewBag.DanhMucSp)
+                {
+                    if (non.TenDanhMuc == "Nón bảo hộ")
+                    {
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="~/img/non.png" alt="" />
+                            <a asp-action="SanphamDanhMuc" asp-route-id="@non.MaDanhMuc" class="btn hvr-hover" style="background-color: #F08080;color: white;">Nón bảo hộ</a>
+                        </div>
+                    }
+                    if (non.TenDanhMuc == "Áo bảo hộ")
+                    {
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="~/img/ao.png" alt="" />
+                            <a asp-action="SanphamDanhMuc" asp-route-id="@non.MaDanhMuc" class="btn hvr-hover" style="background-color: #F08080;color: white;">Áo bảo hộ</a>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                @foreach (var non in ViewBag.DanhMucSp)
+                {
+                    if (non.TenDanhMuc == "Phụ kiện mô tô")
+                    {
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="~/img/moto.png" alt="" />
+                            <a asp-action="SanphamDanhMuc" asp-route-id="@non.MaDanhMuc" class="btn hvr-hover" style="background-color: #F08080;color: white;">Phụ kiện mô tô</a>
+                        </div>
+                    }
+                    if (non.TenDanhMuc == "Trang bị thêm")
+                    {
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="~/img/trangbi.png" alt="" />
+                            <a asp-action="SanphamDanhMuc" asp-route-id="@non.MaDanhMuc" class="btn hvr-hover" style="background-color: #F08080;color: white;">Trang bị thêm</a>
+                        </div>
+                    }
+                }          
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                @foreach (var non in ViewBag.DanhMucSp)
+                {
+                    if (non.TenDanhMuc == "Decal xe")
+                    {
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="~/img/decal.png" alt="" />
+                            <a asp-action="SanphamDanhMuc" asp-route-id="@non.MaDanhMuc" class="btn hvr-hover" style="background-color: #F08080;color: white;">Decal xe</a>
+                        </div>
+                    }
+                    if (non.TenDanhMuc == "Phụ kiện xe máy")
+                    {
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="~/img/xemay.png" alt="" />
+                            <a asp-action="SanphamDanhMuc" asp-route-id="@non.MaDanhMuc" class="btn hvr-hover" style="background-color: #F08080;color: white;">Phụ kiện xe máy</a>
+                        </div>
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+<!-- Start Products  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Sản phẩm đặc sắc</h1>
+                    <p>những sản phẩm đặc sắc của cửa hàng.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button class="active" data-filter="*">Tất cả</button>
+                        <button data-filter=".top-featured">Đặc sắc</button>
+                        <button data-filter=".best-seller">Bán chạy nhất</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row special-list" >
+            @foreach (var item in ViewBag.SanPham)
+            {
+                @if (item.HangMuc == "Bán chạy nhất" && item.TrangThai == true)
+                {
+                    <div class="col-lg-3 col-md-6 special-grid best-seller" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                        <div class="products-single fix">
+                            <div class="box-img-hover">
+                                <div class="type-lb">
+                                    <p class="sale">Bán chạy</p>
+                                </div>
+                                <img src="~/pro/@item.HinhAnh" class="img-fluid" alt="Image">
+                                <div class="mask-icon">
+                                    <ul>
+                                        <li><a data-toggle="tooltip" data-placement="right" title="view" asp-action="Chitietsanpham" asp-controller="Home" asp-route-id="@item.MaSanPham"><i class="fas fa-eye"></i></a></li>
+                                    </ul>
+                                    <a class="cart" href="#">Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                            <div class="why-text">
+                                <h4>Giá chỉ từ</h4>
+                                <h5><strike><del>@item.Gia.ToString("N0") &#8363;</del></strike></h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (item.HangMuc == "Đặc sắc" && item.TrangThai == true)
+                {
+                    <div class="col-lg-3 col-md-6 special-grid top-featured" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                        <div class="products-single fix">
+                            <div class="box-img-hover">
+                                <div class="type-lb">
+                                    <p class="new">Đặc sắc</p>
+                                </div>
+                                <img src="~/pro/@item.HinhAnh" class="img-fluid" alt="Image">
+                                <div class="mask-icon">
+                                    <ul>
+                                        <li><a data-toggle="tooltip" data-placement="right" title="view" asp-action="Chitietsanpham" asp-controller="Home" asp-route-id="@item.MaSanPham"><i class="fas fa-eye"></i></a></li>
+                                    </ul>
+                                    <a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MaSanPham">Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                            <div class="why-text">
+                                <h4>Giá chỉ từ</h4>
+                                <h5><strike><del>@item.Gia.ToString("N0") &#8363;</del></strike></h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<!-- End Products  -->
+<!-- Start Blog  -->
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Tin tức </h1>
+                    <p>Những tin tức về xe cộ.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in ViewBag.TinTuc)
+            {
+                @if (item.TrangThai == true && (item.NoiBat == 1 || item.NoiBat == 2 || item.NoiBat == 3))
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-4" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                        <div class="blog-box">
+                            <div class="blog-img">
+                                <img class="img-fluid" src="~/tintuc/@item.Hinh" alt="" />
+                            </div>
+                            <div class="blog-content">
+                                <div class="title-blog">
+                                    <h3>@item.TenTinTuc</h3>
+                                    <p>@item.MoTa</p>
+                                </div>
+                                <ul class="option-blog">
+                                    <li><a data-toggle="tooltip" data-placement="right" title="Views" asp-action="Index" asp-controller="TinTuc" asp-route-id="@item.MaTinTuc"><i class="fas fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<!-- End Blog  -->

@@ -1,0 +1,226 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Trang chủ</h1>
+                </div>
+
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">Trang chủ</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>@ViewBag.DonMoi</h3>
+
+                            <p>Đơn hàng mới</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a asp-action="Index" asp-controller="DonHangs" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>@ViewBag.SoTien.ToString("N0") &#8363;</h3>
+
+                            <p>Doanh thu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <a asp-action="Done" asp-controller="DonHangs" class="small-box-footer">Xem thêm<i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>@ViewBag.Khach</h3>
+
+                            <p>Số lượng khách hàng</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a asp-action="Index" asp-controller="KhachHangs" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>@ViewBag.LienHe</h3>
+
+                            <p>Số lượng liên hệ</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <a asp-action="Index" asp-controller="QuanLyLienHe" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Đơn hàng đang xử lý</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Trạng thái</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in ViewBag.DonHang)
+                                    {
+                                        <tr>
+                                            <td>@item.MaDonHang</td>
+                                            <td>Đang xử lý</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer clearfix">
+                            @Html.PagedListPager((IPagedList)ViewBag.DonHang, page => Url.Action("Index", "adminHome", new { page = page }))
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Đơn hàng đã hủy</h3>
+                            <div class="card-tools">
+                                @Html.PagedListPager((IPagedList)ViewBag.DonHang0, page => Url.Action("Index", "adminHome", new { page = page }))
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.DonHang0)
+                                    {
+                                        <tr>
+                                            <td>@item.MaDonHang</td>
+                                            <td>Đã hủy</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Đơn hàng đang vận chuyển</h3>
+
+                            <div class="card-tools">
+                                @Html.PagedListPager((IPagedList)ViewBag.DonHang1, page => Url.Action("Index", "adminHome", new { page = page }))
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.DonHang1)
+                                    {
+                                        <tr>
+                                            <td>@item.MaDonHang</td>
+                                            <td>Đang vận chuyển</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Đơn hàng đã hoàn thành</h3>
+                            <div class="card-tools">
+                                @Html.PagedListPager((IPagedList)ViewBag.DonHang2, page => Url.Action("Index", "adminHome", new { page = page }))
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.DonHang2)
+                                    {
+                                        <tr>
+
+                                            <td>@item.MaDonHang</td>
+                                            <td>Đã hoàn thành</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,99 @@
+﻿@model _21_11_2021.Areas.admin.Models.DonHang
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Chi tiết đơn hàng</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="adminHome">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Chi tiết đơn hàng</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Giá</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.ChiTiet)
+                                        {
+                                            if (item.IdDonHang == Model.IdDonHang)
+                                            {
+                                                <tr>
+                                                    @foreach (var item1 in ViewBag.Ten)
+                                                    {
+                                                        <td>@item1.TenSanPham</td>
+                                                    }
+                                                    <td>@item.SoLuong</td>
+                                                    <td>@item.Gia.ToString("N0") &#8363;</td>
+                                                    <td>@item.ThanhTien.ToString("N0") &#8363;</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="form-group">
+                                    @foreach (var khach in ViewBag.Khach)
+                                    {
+                                        <a class="float-right" style="color:black;">Họ Tên: &#160; @khach.HoTen</a><br />
+                                        <a class="float-right" style="color:black;">Số điện thoại: &#160; @khach.PhoneNumber</a><br />
+                                        <a class="float-right" style="color:black;">Địa chỉ: &#160; @khach.DiaChi</a><br />
+                                    }
+                                    <a class="float-right" style="color:blue;">Ngày đặt hàng:  @ViewBag.NgayDatHang</a><br />
+                                    <a class="float-right" style="color:red;">Tổng:  @ViewBag.ThanhTien.ToString("N0") &#8363;</a><br />
+                                    <button type="button" onclick="quay_lai_trang_truoc()" class="btn btn-primary">Quay lại trang trước</button>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</div>
+@section Scripts {
+    <script>
+        function quay_lai_trang_truoc() {
+            history.back();
+        }
+    </script>
+}
+

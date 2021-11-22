@@ -1,0 +1,14 @@
+﻿@model _21_11_2021.Areas.admin.Models.DanhGia
+@{
+    Layout = null;
+}
+<form asp-controller="comment" asp-action="Create" method="post">
+    <input asp-for="ChiTiet" class="form-control" />
+    <span asp-validation-for="ChiTiet" class="text-danger"></span>
+    <input type="hidden" asp-for="MaSanPham" class="form-control" value="@ViewBag.Id" required/>
+    <span asp-validation-for="MaSanPham" class="text-danger"></span>
+    <hr />
+    <div style="text-align:center;">
+        <input type="submit" value="Bình luận" style=" background-color: blue; color: white; border-radius: 13px; " />
+    </div>   
+</form>

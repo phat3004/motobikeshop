@@ -1,0 +1,96 @@
+﻿@model IEnumerable<_21_11_2021.Areas.admin.Models.DanhMuc>
+
+@{
+    var id = 0;
+    ViewData["Title"] = "Index";
+}
+
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Danh mục sản phẩm</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Danh mục sản phẩm</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="alert-box" class="alert @TempData["AlertType"] hide" style="background-color:blue; color:white;">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+        </section>
+       
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <a asp-action="Create"><i class="fas fa-plus-circle"></i></a>
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã danh mục</th>
+                                            <th>Tên danh mục</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.TrangThai == true)
+                                            {
+                                                id = item.MaDanhMuc;
+                                                <tr>
+                                                    <td> @Html.DisplayFor(modelItem => item.MaDanhMuc)</td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.TenDanhMuc)
+                                                    </td>
+                                                    <td>
+                                                        <div class="container-fluid">
+                                                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                                                <a asp-action="Edit" asp-route-id="@item.MaDanhMuc" style="color:white;">Cập nhật</a>
+                                                            </button>
+                                                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                                                <a asp-action="Details" asp-controller="DanhMucs" asp-route-id="@item.MaDanhMuc" style="color:white;">Chi tiết</a>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            @*<a asp-action="Delete" asp-route-id="@item.MaDanhMuc">Delete</a>*@
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</div>

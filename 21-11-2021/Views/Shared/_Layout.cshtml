@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Html.PartialAsync("_Head.cshtml")
+    @RenderSection("css", required: false)
+</head>
+<body>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "108265828336469");
+      chatbox.setAttribute("attribution", "biz_inbox");
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v12.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    @if (TempData["AlertMessage"] != null)
+    {
+<div id="alert-box" class="alert @TempData["AlertType"] hide" style="background-color:blue; color:white;">
+    @TempData["AlertMessage"]
+</div>}
+    @await Html.PartialAsync("_Header.cshtml")
+    @RenderBody()
+    @await Html.PartialAsync("_Footer.cshtml")
+    @await Html.PartialAsync("_Foot.cshtml")
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

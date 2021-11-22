@@ -1,0 +1,43 @@
+﻿@model _21_11_2021.Models.ProfileViewModel
+@{ 
+    Layout = null;
+}
+<form asp-controller="Home" asp-action="Profile" method="post">
+    <div class="input-group mb-3">
+        <input value="@ViewBag.Email" asp-for="Email" disabled class="form-control" required>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span asp-validation-for="Email" class="fas fa-envelope"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input value="@ViewBag.HoTen" asp-for="HoTen" type="text" class="form-control" required>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span asp-validation-for="HoTen" class="fas fa-user"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input asp-for="SDT" value="@ViewBag.SDT" type="tel" class="form-control" required> 
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span asp-validation-for="SDT" class="fas fa-phone-square"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input asp-for="DiaChi" value="@ViewBag.DiaChi" type="text" class="form-control" required>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span asp-validation-for="DiaChi" class="fas fa-address-book"></span>
+            </div>
+        </div>
+    </div>
+    <div class="social-auth-links text-center">
+        <a href="#" class="btn btn-block btn-primary">
+            <button type="submit" class="btn btn-primary btn-block">Cập nhật</button>
+        </a>
+    </div>
+</form>

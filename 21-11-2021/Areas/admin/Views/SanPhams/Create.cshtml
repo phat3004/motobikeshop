@@ -1,0 +1,169 @@
+﻿@model _21_11_2021.Areas.admin.Models.SanPham
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Thêm sản phẩm</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Thêm sản phẩm</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Sản phẩm</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Create" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group" style="height: 50%; width: auto">
+                                <img src="https://vanhoadoanhnghiepvn.vn/wp-content/uploads/2020/08/112815953-stock-vector-no-image-available-icon-flat-vector.jpg" alt="no img" class="img-thumbnail" id="imgPre" />
+                            </div>
+                            <div class="custom-file">
+                                <label asp-for="HinhAnh" for="ful" class="custom-file-label">Chọn hình</label>
+                                <input accept="*.png" name="ful" type="file" id="ful" class="custom-file-input" />
+                                <span asp-validation-for="HinhAnh" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TenSanPham" class="control-label"></label>
+                                <input asp-for="TenSanPham" class="form-control" />
+                                <span asp-validation-for="TenSanPham" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Gia" class="control-label"></label>
+                                <input asp-for="Gia" class="form-control" />
+                                <span asp-validation-for="Gia" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ChiTiet" class="control-label">Chi Tiết</label>
+                                <textarea asp-for="ChiTiet" class="form-control"></textarea>
+                                <span asp-validation-for="ChiTiet" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MaLoaiSanPham" for="inputStatus">Loại sản phẩm</label>
+                                <select asp-for="MaLoaiSanPham" id="inputStatus" class="form-control custom-select">
+                                    <option selected disabled>Chọn loại sản phẩm</option>
+                                    @foreach (var item in ViewBag.MaLoai)
+                                    {
+                                        <option value="@item.MaLoaiSanPham">@item.TenLoaiSanPham</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MaKhuyenMai" for="inputStatus">Khuyến mãi</label>
+                                <select asp-for="MaKhuyenMai" id="inputStatus" class="form-control custom-select">
+                                    <option selected disabled>Chọn khuyen mai</option>
+                                    @foreach (var item in ViewBag.KM)
+                                    {
+                                        <option value="@item.MaKhuyenMai">@item.TenKhuyenMai</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="HangMuc" for="inputStatus">Hạng mục</label>
+                                <select asp-for="HangMuc" id="inputStatus" class="form-control custom-select">
+                                    <option selected disabled>Chọn hạng mục</option>
+                                    <option>Tất cả</option>
+                                    <option>Đặc sắc</option>
+                                    <option>Bán chạy nhất</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <a class="btn btn-success float-right" asp-controller="SanPhams" asp-action="Index">Quay trở về</a>
+                                <input type="submit" value="Thêm mới" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function ReadURL(input, idImg) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(idImg).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#ful").change(function () {
+            ReadURL(this, "#imgPre");
+        });
+    </script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#ChiTiet'), {
+                toolbar: {
+                    items: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'indent',
+                        'outdent',
+                        '|',
+                        'imageUpload',
+                        'blockQuote',
+                        'insertTable',
+                        'mediaEmbed',
+                        'undo',
+                        'redo'
+                    ]
+                },
+                language: 'vi',
+                image: {
+                    toolbar: [
+                        'imageTextAlternative',
+                        'imageStyle:full',
+                        'imageStyle:side'
+                    ]
+                },
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+                console.warn('Build id: mbf6ommreqn-8o65j7c6blw0');
+                console.error(error);
+            });</script>
+}

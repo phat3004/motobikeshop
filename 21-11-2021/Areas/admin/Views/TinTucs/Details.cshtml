@@ -1,0 +1,104 @@
+﻿@model _21_11_2021.Areas.admin.Models.TinTuc
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Tin tức</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Tin tức</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <a asp-action="Index" class="btn btn-primary btn-block mb-3">Trở về</a>
+                    <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Mô tả</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="card-body box-profile">
+                                    <div class="text-center">
+                                        <img class="profile-user-img img-fluid img-circle"
+                                             src="~/tintuc/@Html.DisplayFor(model => model.Hinh)"
+                                             alt="User profile picture">
+                                    </div>
+                                    <h3 class="profile-username text-center">@Html.DisplayFor(model => model.TenTinTuc)</h3>
+                                    <p class="text-muted text-center">Hạng mục: @Html.DisplayFor(model => model.NoiBat)</p>
+                                </div>
+                            </div>       
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Đọc Tin</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <!-- /.mailbox-read-info -->
+                            <div class="mailbox-controls with-border text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm" data-container="body" title="Delete" data-toggle="modal" data-target="#flipFlop">
+                                    <i class="far fa-trash-alt"></i>
+                                    </button>                                  
+                                </div>
+                            </div>
+                            <!-- /.mailbox-controls -->
+                            <div class="mailbox-read-message">
+                                <p>@Html.Raw(Model.ChiTiet)</p>
+                            </div>
+                            <!-- /.mailbox-read-message -->
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Bạn có muốn xóa tin này?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <h4>Mã Danh Mục :  @Html.DisplayFor(model => model.MaTinTuc)</h4>
+                <h4>Tên Danh Mục:  @Html.DisplayFor(model => model.TenTinTuc)</h4>
+            </div>
+            <div class="modal-footer">
+                <a asp-action="DeleteModal" asp-route-id="@Model.MaTinTuc" style="color:red;">Xóa</a>
+            </div>
+        </div>
+    </div>
+</div>

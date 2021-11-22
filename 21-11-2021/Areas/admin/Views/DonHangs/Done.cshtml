@@ -1,0 +1,93 @@
+﻿@model IEnumerable<_21_11_2021.Areas.admin.Models.DonHang>
+@{
+    decimal tongthu = 0;
+}
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Đơn hàng đã hoàn thành</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Đơn hàng đã hoàn thành</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    @using (Html.BeginForm("Done", "DonHangs", FormMethod.Get))
+                                    {
+                                        <p>
+                                            Mã đơn: @Html.TextBox("searchString")
+                                            Bạn muốn xem doanh thu tháng mấy @Html.TextBox("thang")
+                                            <input type="submit" value="Tìm kiếm" />
+                                        </p>
+                                    }
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn</th>
+                                            <th>Tổng giá</th>
+                                            <th>Ngày lập</th>
+                                            <th>Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.TrangThai == 3)
+                                            {
+                                                <tr>
+                                                    <td>@item.MaDonHang</td>
+                                                    <td>@item.TongTien.ToString("N0") &#8363;</td>
+                                                    <td>@item.NgayLap</td>
+                                                    <td>Đã hoàn thành</td>
+                                                    <td>
+                                                        <div class="container-fluid">
+                                                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                                                <a asp-action="Details" asp-route-id="@item.IdDonHang" style="color:white;">Chi Tiết</a>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                tongthu += item.TongTien;
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                                <div><h3 style="color:blue;">Tổng doanh thu: @tongthu.ToString("N0") &#8363;</h3></div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</div>

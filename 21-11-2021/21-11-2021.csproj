@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>_21_11_2021</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\User\fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\admin\Views\adminHome\Index.cshtml" />
+    <None Include="Areas\admin\Views\DanhGias\Index.cshtml" />
+    <None Include="Areas\admin\Views\DanhMucs\Create.cshtml" />
+    <None Include="Areas\admin\Views\DanhMucs\Delete.cshtml" />
+    <None Include="Areas\admin\Views\DanhMucs\Edit.cshtml" />
+    <None Include="Areas\admin\Views\DanhMucs\Index.cshtml" />
+    <None Include="Areas\admin\Views\DonHangs\Details.cshtml" />
+    <None Include="Areas\admin\Views\DonHangs\Edit.cshtml" />
+    <None Include="Areas\admin\Views\DonHangs\Index.cshtml" />
+    <None Include="Areas\admin\Views\SlideshowFoots\Create.cshtml" />
+    <None Include="Areas\admin\Views\SlideshowFoots\Edit.cshtml" />
+    <None Include="Areas\admin\Views\SlideshowFoots\Index.cshtml" />
+    <None Include="Areas\admin\Views\KhuyenMais\Create.cshtml" />
+    <None Include="Areas\admin\Views\KhuyenMais\Delete.cshtml" />
+    <None Include="Areas\admin\Views\KhuyenMais\Details.cshtml" />
+    <None Include="Areas\admin\Views\KhuyenMais\Edit.cshtml" />
+    <None Include="Areas\admin\Views\KhuyenMais\Index.cshtml" />
+    <None Include="Areas\admin\Views\LoaiSanPhams\Create.cshtml" />
+    <None Include="Areas\admin\Views\LoaiSanPhams\Delete.cshtml" />
+    <None Include="Areas\admin\Views\LoaiSanPhams\Details.cshtml" />
+    <None Include="Areas\admin\Views\LoaiSanPhams\Edit.cshtml" />
+    <None Include="Areas\admin\Views\LoaiSanPhams\Index.cshtml" />
+    <None Include="Areas\admin\Views\SanPhams\Create.cshtml" />
+    <None Include="Areas\admin\Views\SanPhams\Details.cshtml" />
+    <None Include="Areas\admin\Views\SanPhams\Edit.cshtml" />
+    <None Include="Areas\admin\Views\SanPhams\Index.cshtml" />
+    <None Include="Areas\admin\Views\Shared\Error.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_Foot.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_Footer.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_Foot_DanhMuc.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_Head.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_Header.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_Head_DanhMuc.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\admin\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Areas\admin\Views\Slideshows\Create.cshtml" />
+    <None Include="Areas\admin\Views\Slideshows\Delete.cshtml" />
+    <None Include="Areas\admin\Views\Slideshows\Details.cshtml" />
+    <None Include="Areas\admin\Views\Slideshows\Edit.cshtml" />
+    <None Include="Areas\admin\Views\Slideshows\Index.cshtml" />
+    <None Include="Areas\admin\Views\TinTucs\Create.cshtml" />
+    <None Include="Areas\admin\Views\TinTucs\Delete.cshtml" />
+    <None Include="Areas\admin\Views\TinTucs\Details.cshtml" />
+    <None Include="Areas\admin\Views\TinTucs\Edit.cshtml" />
+    <None Include="Areas\admin\Views\TinTucs\Index.cshtml" />
+    <None Include="Views\Account\AccessDenied.cshtml" />
+    <None Include="Views\Account\ConfirmEmail.cshtml" />
+    <None Include="Views\Account\Error.cshtml" />
+    <None Include="Views\Account\ExternalLogin.cshtml" />
+    <None Include="Views\Account\ForgotPassword.cshtml" />
+    <None Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Account\ResetPassword.cshtml" />
+    <None Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <None Include="Views\Account\SuccessRegistration.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="MailKit" Version="2.15.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="MimeKit" Version="2.15.1" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmailSender\EmailSender.csproj" />
+  </ItemGroup>
+
+</Project>

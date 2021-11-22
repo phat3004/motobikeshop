@@ -1,0 +1,68 @@
+﻿@model _21_11_2021.Areas.admin.Models.LienHe
+
+<div class="contact-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <div class="contact-info-left">
+                    <h2>Liên hệ với chúng tôi.</h2>
+                    <p>Để liên hệ với chúng tôi vui lòng liên hệ với thông tin trên hoặc điền vào biểu mẫu, chúng tôi sẽ trả lời sớm nhất qua mail.</p>
+                    <ul>
+                        <li>
+                            <p><i class="fas fa-map-marker-alt"></i>Address: HCM, <br>65 Huynh Thuc Khang,<br> PS: The next SaiGon Centre</p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:0907231374">+84-907231374</a></p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-envelope"></i>Email: <a href="mailto:nhmphat304@gmail.com">motobikeshop@gmail.com</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12">
+                <div class="contact-form-right">
+                    <h2>Liên hệ</h2>
+                    <p>Bạn muốn liên hệ với chúng tôi hãy đặt câu hỏi.</p>
+                    <form asp-action="Create">
+                        <div class="row">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input asp-for="HoTen" class="form-control"  placeholder="Họ tên" required data-error="Vui lòng nhập họ tên">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input asp-for="Email" placeholder="Email" class="form-control"  required data-error="Vui lòng nhập email">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input asp-for="SDT" placeholder="Số điện thoại"  class="form-control"  required data-error="Vui lòng nhập số điện thoại">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea asp-for="ChiTiet" class="form-control" placeholder="Lời nhắn" rows="4" data-error="Vui lòng để lời nhắc" required></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="submit-button text-center">
+                                    <button class="btn hvr-hover" id="submit" type="submit" style="background-color:red; color:white;">Gửi tin nhắn</button>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
